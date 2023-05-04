@@ -12,8 +12,8 @@ Alguns requisitos:
 
 - A aplicação deve ser nova e disponibilizada em um repositório público do BitBucket;
 - Crie um fork desse repositório;
-- As informações devem ser armazenadas usando PostgreSQL, MySQL, SQL Server ou outro;
-- A aplicação deve ser implantada preferencialmente no Heroku, AWS ou Azure, e o link de acesso deve ser disponibilizado;
+- As informações devem ser armazenadas usando um banco de sua escolha (PostgreSQL, MySQL, SQL Server, etc);
+- O deploy da aplicação deve ser realizado em um serviço de nuvem de sua escolha (Heroku, AWS, DigitalOcean, etc), e o link de acesso deve ser disponibilizado;
 - A aplicação deve ter testes automatizados e preferencialmente ser dockerizada;
 - O arquivo README deve conter um guia passo a passo para configurar o ambiente.
 
