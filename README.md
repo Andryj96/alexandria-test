@@ -2,11 +2,11 @@
 
 Construa uma nova aplicação, utilizando NodeJS, a qual deverá conectar na [API do GitHub](https://docs.github.com/pt/rest/guides/getting-started-with-the-rest-api) e disponibilizar as seguintes funcionalidades:
 
-- Botão para buscar e armazenar os repositórios destaques de 5 linguagens à sua escolha;
-- Listar os repositórios encontrados;
-- Visualizar os detalhes de cada repositório.
-- Favoritar/Desfavoritar repositórios;
-- Listar o repositórios favoritos;
+- Rota para buscar e armazenar os repositórios destaques de 5 linguagens à sua escolha;
+- Rota para listar os repositórios encontrados;
+- Rota para visualizar os detalhes de cada repositório.
+- Rota para favoritar/desfavoritar repositórios, salvando a data, hora e IP usado para realizar a operação;
+- Rota para listar os repositórios favoritados mostrando a data e hora em que os repositorios foram favoritados, sendo que a data e hora deve ser mostrada no fuso horario do usuario com base no ip utilizado no momento da consulta;
 
 Alguns requisitos:
 
