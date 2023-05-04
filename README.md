@@ -12,7 +12,7 @@ Alguns requisitos:
 
 - Deve ser uma aplicação totalmente nova;
 - Crie um fork desse repositório;
-- A solução deve estar em um repositório público do GitHub;
+- A solução deve estar em um repositório público do BitBucket;
 - A aplicação deve armazenar as informações encontradas utilizando PostgreSQL, MySQL, SQL Server ou outro;
 - Realizar deploy da aplicação, preferencialmente no Heroku, AWS ou Azure;
 - O link da aplicação deployada deverá ser disponibilizado;
