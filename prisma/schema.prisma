@@ -10,11 +10,17 @@ datasource db {
 
 // models
 model Repository {
-  id          Int     @id @default(autoincrement())
-  name        String
-  description String?
-  language    String
-  url         String
+  id              Int      @id @default(autoincrement())
+  guithubId       Int
+  name            String
+  fullName        String
+  description     String?
+  language        String
+  stargazersCount Int // stars
+  htmlUrl         String
+  owner           String?
+  createdAt       DateTime
+  updatedAt       DateTime
 
   favorites Favorite[]
 }
