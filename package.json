@@ -12,7 +12,9 @@
     "octokit": "^2.0.18"
   },
   "devDependencies": {
+    "jest": "^29.5.0",
     "nodemon": "^2.0.22",
-    "prisma": "^4.14.1"
+    "prisma": "^4.14.1",
+    "supertest": "^6.3.3"
   }
 }
