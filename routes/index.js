@@ -59,6 +59,9 @@ router.put("/repos/:id/favorite", async (req, res, next) => {
     const id = parseInt(req.params.id);
     const { favorite } = req.body;
 
+    if (favorite === undefined || typeof favorite !== "boolean")
+      res.status(400).json({ message: "'favorite' muest be boolean." });
+
     if (!Number.isInteger(id))
       res.status(404).json({ message: "Repository not found." });
 
