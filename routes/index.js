@@ -1,23 +1,32 @@
-const express = require('express');
-const { Octokit } = require('octokit');
-const { PrismaClient } = require('@prisma/client');
+const express = require("express");
+const { PrismaClient } = require("@prisma/client");
+const { searchRepos } = require("../utils/github");
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const router = express.Router();
 
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
+router.get("/", (req, res) => {
+  res.json({ message: "Alexandria Tech Teste" });
 });
 
+router.get("/search", async (req, res, next) => {
+  try {
+    const repos = await searchRepos();
+    result = await prisma.repository.createMany({
+      data: repos,
+    });
 
-router.get('/', (req, res, next) => {
-  res.json({ message: 'Alexandria Tech Teste' });
+    res.json(repos);
+  } catch (err) {
+    next(err);
+  }
 });
 
-router.get(`/repos`, async (_req, res) => {
-  const result = await prisma.repository.findMany()
-  res.json(result)
-})
+router.get("/repos", async (_req, res) => {
+  const result = await prisma.repository.findMany();
+
+  res.json(result);
+});
 
 module.exports = router;
