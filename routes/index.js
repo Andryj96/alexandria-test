@@ -35,8 +35,12 @@ router.get("/repos", async (req, res) => {
 // GET details from saved repo by ID
 // Consider taking the repository details from those that were saved earlier
 router.get("/repos/:id", async (req, res) => {
+  const id = parseInt(req.params.id);
+  if (!Number.isInteger(id))
+    res.status(404).json({ message: "Repository not found." });
+
   const result = await prisma.repository.findUnique({
-    where: { id: parseInt(req.params.id) },
+    where: { id },
   });
 
   if (!result) res.status(404).json({ message: "Repository not found." });
@@ -51,12 +55,15 @@ router.get("/repos/:id", async (req, res) => {
 */
 router.put("/repos/:id/favorite", async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const id = parseInt(req.params.id);
     const { favorite } = req.body;
+
+    if (!Number.isInteger(id))
+      res.status(404).json({ message: "Repository not found." });
 
     // Gets the repository information from the database
     const repository = await prisma.repository.findUnique({
-      where: { id: parseInt(id) },
+      where: { id },
     });
 
     if (!repository) {
@@ -67,15 +74,15 @@ router.put("/repos/:id/favorite", async (req, res, next) => {
     const { datetime, ip } = getOperationDetails(req);
 
     // Save the favorite information crating or updating a Favorite record
-    const isFavorite = await prisma.favorite.findFirst({
+    const inFavorite = await prisma.favorite.findFirst({
       where: { repositoryId: repository.id },
     });
 
     let favorited = null;
 
-    if (isFavorite) {
+    if (inFavorite) {
       favorited = await prisma.favorite.update({
-        where: { id: repository.id },
+        where: { id: inFavorite.id },
         data: {
           datetime,
           favorite,
@@ -94,7 +101,7 @@ router.put("/repos/:id/favorite", async (req, res, next) => {
     }
 
     res.json({
-      message: "Saved as favorite repo.",
+      message: `Saved as${!favorite ? " not" : ""} favorite repo.`,
       details: favorited,
     });
   } catch (err) {
