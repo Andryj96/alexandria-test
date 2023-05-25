@@ -26,10 +26,10 @@ model Repository {
 }
 
 model Favorite {
-  id       Int      @id @default(autoincrement())
-  datetime DateTime @default(now())
-  last_ip  String
-
+  id           Int        @id @default(autoincrement())
+  datetime     DateTime   @default(now())
+  last_ip      String
+  favorite     Boolean
   repository   Repository @relation(fields: [repositoryId], references: [id])
   repositoryId Int
 }
