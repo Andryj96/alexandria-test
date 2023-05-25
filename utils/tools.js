@@ -1,8 +1,22 @@
-function getOperationDetails(req) {
-  const datetime = new Date().toISOString();
-  const ip = req.ip; // Obtain local ip of the request
+const iplocate = require("node-iplocate");
 
-  return { datetime, ip };
-}
+module.exports = {
+  getOperationDetails: (req) => {
+    const datetime = new Date().toISOString();
+    const ip = req.ip; // Obtain local ip of the request
 
-module.exports = getOperationDetails;
+    return { datetime, ip };
+  },
+
+  getUserTimeZone: async (ip) => {
+    try {
+      let apiKey = process.env.IP_LOCATE_KEY;
+
+      const result = await iplocate(ip, { apiKey });
+      return result.time_zone;
+    } catch (error) {
+      console.error("Error al obtener la zona horaria:", error);
+      return null;
+    }
+  },
+};
