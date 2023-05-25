@@ -1,7 +1,8 @@
 const express = require("express");
+const moment = require("moment-timezone");
 const { PrismaClient } = require("@prisma/client");
 const { searchRepos } = require("../utils/github");
-const getOperationDetails = require("../utils/tools");
+const { getOperationDetails, getUserTimeZone } = require("../utils/tools");
 
 const prisma = new PrismaClient();
 
@@ -109,5 +110,41 @@ router.put("/repos/:id/favorite", async (req, res, next) => {
   }
 });
 
+// List favorite repositories
+router.get("/favorites", async (req, res, next) => {
+  try {
+    // Obtain client Ip address
+    const clientIP = req.ip;
+
+    const timeZone = await getUserTimeZone(clientIP);
+
+    // Find favorite repositories in DB
+    const favorites = await prisma.favorite.findMany({
+      where: {
+        favorite: true,
+      },
+      include: {
+        repository: true,
+      },
+    });
+
+    // map results to influde user local time
+    const formattedFavorites = favorites.map((favorite) => {
+      const formattedDateTime = moment(favorite.datetime)
+        .tz(timeZone || "UTC") // timezone from ip locate api
+        .format("YYYY-MM-DD HH:mm:ss");
+
+      return {
+        ...favorite.repository,
+        timeZone: timeZone || "UTC",
+        favoritedAt: formattedDateTime,
+      };
+    });
+
+    res.json(formattedFavorites);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
