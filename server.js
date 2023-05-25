@@ -16,6 +16,7 @@ app.use((req, res, next) => {
   // Create 404 error
   const err = new Error("Not Found");
   err.statusCode = 404;
+  err.message = "Page Not Found";
 
   // Pass error to next middleware
   next(err);
@@ -28,8 +29,7 @@ app.use((err, req, res, next) => {
 
   // send response
   res.status(statusCode).json({
-    status: "error",
-    message: "System Error",
+    message: err.message || "System Error",
   });
   console.log(err);
 });
