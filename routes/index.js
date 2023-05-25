@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
   res.json({ message: "Alexandria Tech Teste" });
 });
 
+// Search repos
 router.get("/search", async (req, res, next) => {
   try {
     const repos = await searchRepos();
@@ -23,6 +24,7 @@ router.get("/search", async (req, res, next) => {
   }
 });
 
+// List All saved repos without pagination
 router.get("/repos", async (_req, res) => {
   const result = await prisma.repository.findMany();
 
