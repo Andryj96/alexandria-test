@@ -4,13 +4,11 @@ WORKDIR /app
 
 COPY package*.json ./
 
-COPY prisma /app/prisma/
-COPY .env /app/
-
-COPY . /app/
+COPY prisma ./prisma/
+COPY .env ./
+COPY start.sh ./
+COPY . .
 
 RUN npm install
-RUN npx prisma generate
-RUN npx prisma migrate deploy
 
-CMD ["npm", "start"]
+CMD ["/bin/sh", "start.sh"]
