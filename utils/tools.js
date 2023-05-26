@@ -9,6 +9,8 @@ module.exports = {
   },
 
   getUserTimeZone: async (ip) => {
+    if (process.env.NODE_ENV === "testing") return "America/Sao_Paulo";
+
     try {
       let apiKey = process.env.IP_LOCATE_KEY;
 
