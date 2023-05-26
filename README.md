@@ -76,9 +76,9 @@ The API handles errors using middleware and returns appropriate error responses.
 
 ## Testing
 
-Unit tests have been implemented using Jest. To run the tests, execute the following command:
+Unit tests have been implemented using Jest and Docker enviroment for integration testing. To run the tests, execute the following command:
 
-`docker compose run app npm run test`
+`npm run test`
 
 The tests cover the main functionalities of the API and help ensure the correctness of the implementation.
 

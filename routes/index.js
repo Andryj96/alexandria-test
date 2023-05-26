@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 router.get("/search", async (req, res, next) => {
   try {
     const repos = await searchRepos();
-    result = await prisma.repository.createMany({
+    await prisma.repository.createMany({
       data: repos,
     });
 

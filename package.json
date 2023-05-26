@@ -4,8 +4,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "docker:test": "docker compose -f docker-compose-test.yml run app_test sh ./start-test.sh && docker compose -f docker-compose-test.yml down",
-    "test": "npx jest"
+    "test": "docker compose -f docker-compose-test.yml run app_test sh ./start-test.sh && docker compose -f docker-compose-test.yml down"
   },
   "dependencies": {
     "@prisma/client": "^4.14.1",

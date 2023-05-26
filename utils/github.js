@@ -6,7 +6,9 @@ const octokit = new Octokit({
 
 module.exports = {
   searchRepos: async () => {
-    const languages = ["javascript", "python", "java", "ruby", "go"];
+    let languages = ["javascript", "python", "java", "ruby", "go"];
+    
+    if ((process.env.NODE_ENV = "test")) languages = ["javascript"];
 
     try {
       // Get all repos in a parallel promise, also may be for off
