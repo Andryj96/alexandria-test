@@ -4,10 +4,14 @@
 
 This is a Node.js application that connects to the GitHub API to perform various functionalities related to repositories. It provides endpoints to search, store, and favorite repositories. The application also utilizes a database to persist repository and favorite data.
 
+### Tech Stack
+
+Express.JS -> Prisma ORM -> PostgreSQL
+
 ## Installation
 
 1. Clone the repository from the repository URL.
-2. Create a `.env` file in the project root directory and set the required environment variables:
+2. Create a `.env` file in the project root directory and set the required environment variables, can use this values:
 
    ```
    POSTGRES_USER=alexandria
@@ -17,7 +21,9 @@ This is a Node.js application that connects to the GitHub API to perform various
    DATABASE_URL=postgresql://alexandria:alexandria@postgres:5432/alexandria_db?schema=public
 
    GITHUB_TOKEN=<OPTIONAL GitHub Access Token>
-   IP_LOCATE_KEY=<API KEY FROM https://www.iplocate.io/ to get ip timezone locations>
+
+   IP_LOCATE_KEY=333131e3ea1baf016a1ee39deeab84fb
+   This API KEY FROM https://www.iplocate.io/ to get ip timezone locations
    ```
 
 3. Running with Docker
@@ -72,7 +78,7 @@ The API handles errors using middleware and returns appropriate error responses.
 
 Unit tests have been implemented using Jest. To run the tests, execute the following command:
 
-`npm run test`
+`docker compose run app npm run test`
 
 The tests cover the main functionalities of the API and help ensure the correctness of the implementation.
 
