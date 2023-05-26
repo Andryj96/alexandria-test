@@ -15,3 +15,5 @@ RUN chmod +x ./start.sh
 RUN chmod +x ./start-test.sh
 
 RUN npm install
+
+CMD ["/bin/sh", "start.sh"]

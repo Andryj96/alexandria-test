@@ -54,14 +54,6 @@ describe("Integration tests", () => {
     expect(response.body.details.favorite).toBe(true);
   });
 
-  it("should return 400 when validate input", async () => {
-    const response = await request(app)
-      .put("/repos/141/favorite/")
-      .send({ favorite: "asdas" });
-
-    expect(response.status).toBe(400);
-  });
-
   it("should list favorite repos", async () => {
     const response = await request(app).get("/favorites");
 

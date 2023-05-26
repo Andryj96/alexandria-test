@@ -15,8 +15,8 @@ module.exports = {
       const result = await iplocate(ip, { apiKey });
       return result.time_zone;
     } catch (error) {
-      console.error("Error al obtener la zona horaria:", error);
-      return null;
+      console.log("Error al obtener la zona horaria:", error);
+      return "America/Sao_Paulo";
     }
   },
 };

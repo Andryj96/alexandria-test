@@ -1,5 +1,7 @@
 # Alexandria Tech Test
 
+Deploy url https://alexandria-test.onrender.com/
+
 ## Introduction
 
 This is a Node.js application that connects to the GitHub API to perform various functionalities related to repositories. It provides endpoints to search, store, and favorite repositories. The application also utilizes a database to persist repository and favorite data.

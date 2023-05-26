@@ -8,7 +8,7 @@ module.exports = {
   searchRepos: async () => {
     let languages = ["javascript", "python", "java", "ruby", "go"];
     
-    if ((process.env.NODE_ENV = "test")) languages = ["javascript"];
+    if ((process.env.NODE_ENV === "testing")) languages = ["javascript"];
 
     try {
       // Get all repos in a parallel promise, also may be for off
