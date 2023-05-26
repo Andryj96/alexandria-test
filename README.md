@@ -16,7 +16,7 @@ This is a Node.js application that connects to the GitHub API to perform various
 
    DATABASE_URL=postgresql://alexandria:alexandria@postgres:5432/alexandria_db?schema=public
 
-   GITHUB_TOKEN=<GitHub Access Token>
+   GITHUB_TOKEN=<OPTIONAL GitHub Access Token>
    IP_LOCATE_KEY=<API KEY FROM https://www.iplocate.io/ to get ip timezone locations>
    ```
 
@@ -78,7 +78,7 @@ The tests cover the main functionalities of the API and help ensure the correctn
 
 ## Dependencies
 
-The Alexandria Teste relies on the following dependencies:
+The Alexandria Teste use some of the following dependencies:
 
 - Express: Web framework for handling API routes.
 - Prisma: ORM (Object-Relational Mapping) for database operations.
