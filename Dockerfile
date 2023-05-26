@@ -7,8 +7,11 @@ COPY package*.json ./
 COPY prisma ./prisma/
 
 COPY start.sh ./
+COPY start-test.sh ./
 COPY . .
 
-RUN npm install
+# Execution perm
+RUN chmod +x ./start.sh
+RUN chmod +x ./start-test.sh
 
-CMD ["/bin/sh", "start.sh"]
+RUN npm install

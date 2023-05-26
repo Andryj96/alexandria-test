@@ -4,8 +4,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "docker:test": "docker compose -f docker-compose-test.yml run app_test sh ./start-test.sh && docker compose -f docker-compose-test.yml down",
     "test": "npx jest"
-
   },
   "dependencies": {
     "@prisma/client": "^4.14.1",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "jest": "^29.5.0",
+    "jest-mock-extended": "^3.0.4",
     "nodemon": "^2.0.22",
     "prisma": "^4.14.1",
     "supertest": "^6.3.3"
